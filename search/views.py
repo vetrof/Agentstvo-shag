@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from homes.models import Home
+
 
 def search_views(request):
-    return render(request, 'search.html')
+    homes = Home.objects.all()
+    return render(request, 'search.html', {'homes': homes})
