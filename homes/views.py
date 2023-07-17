@@ -12,6 +12,9 @@ def list_views(request):
 
 def detail_view(request, pk):
     home = Home.objects.get(id=pk)
+    print('*******************')
+    print(home)
+    print('*******************')
     return render(request, 'detail.html', {'home': home})
 
 
