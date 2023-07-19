@@ -24,6 +24,6 @@ class Home(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('detail_page', args=[self.id])
+        return reverse('homes:detail_page', args=[self.id])
 
 
