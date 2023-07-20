@@ -19,6 +19,7 @@ class Home(models.Model):
     cost = models.IntegerField()
     img = models.ImageField(upload_to='img', blank=True, null=True)
     manager = models.ForeignKey(Manager, on_delete=models.PROTECT, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, blank=True, null=True)
 
     def __str__(self):
         return self.title

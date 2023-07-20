@@ -8,9 +8,12 @@ def search_views(request):
     query = request.GET.get('q')
     max = request.GET.get('max')
     min = request.GET.get('min')
+    cat_id = request.GET.get('category')
+
+    categories = Category.objects.all()
 
     if query:
-        homes = Home.objects.filter(info__iregex=query)
+        homes = Home.objects.filter(Q(info__iregex=query) | Q(title__iregex=query))
     else:
         homes = Home.objects.all()
 
@@ -20,4 +23,8 @@ def search_views(request):
     if min:
         homes = homes.filter(cost__gte=min)
 
-    return render(request, 'search.html', {'homes': homes})
+    if cat_id:
+        homes = homes.filter(category=cat_id)
+
+
+    return render(request, 'search.html', {'homes': homes, 'categories': categories})

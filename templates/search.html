@@ -2,18 +2,25 @@
 {% block content %}
 
 
-
   <br>
   <br>
     <div class="container">
         <form action="" method="get">
 
+        <select name="category" class="form-control" onchange="this.form.submit()">
+            <option value="">Тип недвижимости</option>
+                {% for i in categories %}
+                   <option value="{{ i.pk }}" {% if request.GET.category|stringformat:"s" == i.pk|stringformat:"s" %}selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+        </select>
 
-            <input name="q" placeholder="text search">
-            <input name="max" placeholder="max price">
-            <input name="min" placeholder="min price">
+
+            <input name="q" placeholder="text search" value="{{ request.GET.q }}">
+            <input name="max" placeholder="max price" value="{{ request.GET.max }}">
+            <input name="min" placeholder="min price" value="{{ request.GET.min }}">
             <button type="submit"> Search </button>
         </form>
+
 
 
     </div>
