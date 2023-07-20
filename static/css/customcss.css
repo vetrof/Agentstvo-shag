@@ -34,10 +34,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff;
+  color: #e3e8ea;
 }
 .header-title {
-  font-size: 32px;
+  font-size: 64px;
   font-weight: bold;
   margin-bottom: 20px;
 }
