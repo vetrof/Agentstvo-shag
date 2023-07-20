@@ -1,6 +1,7 @@
+from django.db.models import Q
 from django.shortcuts import render
 
-from homes.models import Home
+from homes.models import Home, Category
 
 
 def search_views(request):
