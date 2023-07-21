@@ -14,6 +14,7 @@ urlpatterns = [
     path('', include('homes.urls', namespace='homes')),
     path('search/', include('search.urls', namespace='search')),
     path('contacts/', include('contacts.urls', namespace='contacts')),
+    path('api/', include('api.urls', namespace='api'))
 ]
 
 if settings.DEBUG is True:

@@ -1,7 +1,8 @@
 
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from application.forms import ApplicationForm
 from homes.models import Home
 
 
@@ -12,10 +13,17 @@ def list_views(request):
 
 def detail_view(request, pk):
     home = Home.objects.get(id=pk)
-    print('*******************')
-    print(home)
-    print('*******************')
-    return render(request, 'detail.html', {'home': home})
+
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('homes:main_page')
 
 
+
+    else:
+        form = ApplicationForm()
+
+    return render(request, 'detail.html', {'home': home, 'form': form})
 
